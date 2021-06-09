@@ -130,6 +130,7 @@ public class ExtractFunction extends GhidraScript {
                     printf("ERROR: call, but not to address!");
                     continue;
                 }
+                println(pcodeOpAST.toString());
                 pcodeOpCallSites.add(pcodeOpAST);
             } else if (pcodeOpAST.getOpcode() == PcodeOp.COPY) {
 
@@ -181,7 +182,7 @@ public class ExtractFunction extends GhidraScript {
             }
             jo.put(function.getName(), arr);
         }
-        PrintWriter pw = new PrintWriter("JSONExample.json");
+        PrintWriter pw = new PrintWriter("device_functions.json");
         pw.write(jo.toJSONString());
 
         pw.flush();
